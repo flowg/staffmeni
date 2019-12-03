@@ -26,6 +26,10 @@ const routes: Routes = [
             {
                 path: '',
                 component: DashboardComponent
+            },
+            {
+                path: 'staffer',
+                loadChildren: () => import('../StafferModule/staffer.module').then( m => m.StafferModule )
             }
         ]
     }
