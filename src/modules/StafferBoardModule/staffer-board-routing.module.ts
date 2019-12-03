@@ -2,12 +2,17 @@
  * Angular imports
  */
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {
+    Routes,
+    RouterModule
+} from '@angular/router';
 
 /**
  * App imports
  */
-import { StafferBoardComponent } from "./staffer-board/staffer-board.component";
+import { StafferBoardComponent } from './staffer-board/staffer-board.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './auth.guard';
 
 /**
  * TypeScript entities and constants
@@ -16,6 +21,13 @@ const routes: Routes = [
     {
         path: '',
         component: StafferBoardComponent,
+        canActivateChild: [ AuthGuard ],
+        children: [
+            {
+                path: '',
+                component: DashboardComponent
+            }
+        ]
     }
 ];
 
